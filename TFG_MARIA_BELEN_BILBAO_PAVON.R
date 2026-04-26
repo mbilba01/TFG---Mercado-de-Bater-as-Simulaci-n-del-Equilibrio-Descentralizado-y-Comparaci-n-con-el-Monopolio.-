@@ -37,7 +37,7 @@ plot(gridd, valores_demanda, type="l",col = "blue", lwd = 2,
 
 #2. Cáculo de la capacidad de cable L
 max_demanda    = max(valores_demanda)
-L = max_demanda * 0.33
+L = max_demanda * 0.40
 
 #3. Definición de Phi - Coste Marginal del Gas
 
@@ -55,7 +55,7 @@ phi=function(tim,a1,a2,a3){
 #4.Algoritmo: dado S0, phi, D, L y w0 calcula el equilibrio
 s_inicial = 500 
 
-w_0=0.33*sum(valores_demanda) 
+w_0=0.45*sum(valores_demanda) 
 #w_0=374164.2 #Variación posterior
 
 objetivo_equilibrio = function(s_inicial) {
