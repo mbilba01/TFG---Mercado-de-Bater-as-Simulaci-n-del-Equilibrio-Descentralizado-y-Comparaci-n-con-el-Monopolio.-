@@ -30,14 +30,14 @@ demanda(gridd,a,b,c)
 
 # Gráfica de la demanda
 plot(gridd, valores_demanda, type="l",col = "blue", lwd = 2,
-     main = "Curva de Demanda Energética (17h - 24h)",
+     main = "Curva de Demanda Energética",
      xlab = "Hora del día", 
-     ylab = "Demanda (unidades)",
+     ylab = "Demanda MW",
      panel.first = grid())
 
 #2. Cáculo de la capacidad de cable L
 max_demanda    = max(valores_demanda)
-L = max_demanda * 0.40
+L = max_demanda * 0.33
 
 #3. Definición de Phi - Coste Marginal del Gas
 
@@ -171,6 +171,15 @@ plot(s_prueba, errores, type="l", col="red", lwd=2,
      main="Búsqueda del Equilibrio",
      xlab="S_inicial",
      ylab="Diferencia con W0",
+     panel.first = grid())
+
+
+par(mar=c(5, 6, 4, 2)) 
+
+plot(s_prueba, errores, type="l", col="red", lwd=2,
+     main="Búsqueda del Equilibrio",
+     xlab=expression(S[inicial]), 
+     ylab=expression(sum(S[t], t==0, T-1) - W[0]),
      panel.first = grid())
 
 # Añadimos un punto con el s_optimo encontrado
@@ -327,7 +336,7 @@ print(paste("Ahorro Consumidor (MONOPOLIO):", round(excedente_MON, 2)))
 plot(gridd, valores_demanda, type="l", col="darkgrey", lwd=2, lty=2,
      main = "Demanda vs MFE vs Monopolio",
      xlab = "Hora del día", 
-     ylab = "Energía (unidades)",
+     ylab = "Energía MW",
      ylim = c(0, max(valores_demanda, stim, s_monopolio) * 1.1), 
      panel.first = grid())
 lines(gridd, stim, col = "blue", lwd = 2)
